@@ -1,0 +1,2 @@
+# AcademiaNG
+School Management System

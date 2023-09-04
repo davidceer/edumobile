@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiaNG.Views.MainPage">
+    <StackLayout Margin="20,35,20,20">
+        <Button Text="List of Schools on AcademiaNG" Clicked="OnButtonClicked" />
+        <CollectionView x:Name="collectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <!--Name, Description, HTMLHomeUrl-->
+                        <Label Text="{Binding OrgID}" FontSize="Medium" />
+                        <Label Text="{Binding Name}" FontSize="Medium" />
+                        <Label Text="{Binding Code}" TextColor="Silver" FontSize="Medium" />
+                        <Label Text="{Binding Email}" TextColor="Gray" FontSize="Caption" />
+                        <Label Text="{Binding Address1}" TextColor="Gray" FontSize="Caption" />
+                        <Label Text="{}" TextColor="Green" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

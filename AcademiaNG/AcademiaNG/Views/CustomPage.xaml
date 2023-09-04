@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiaNG.Views.CustomPage">
+    <!--<ContentPage.BindingContext>
+        <local:CustomViewModel></local:CustomViewModel>
+    </ContentPage.BindingContext>-->
+
+    <StackLayout>
+        <Button Text="save" Command="{Binding SaveCommand }"></Button> <!--add this saving button for testing-->
+        <CollectionView  ItemsSource="{Binding Grouped}"
+                        IsGrouped = "True"
+              >
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal">
+                        <Label BackgroundColor="Red" Text="{Binding Name}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+
+            <CollectionView.GroupFooterTemplate >
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal" Padding="10,5,5,10">
+                        <Button Text="+" Command="{Binding AddCommand }"/>
+                        <!--add button-->
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.GroupFooterTemplate>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" ></ColumnDefinition>
+                            <ColumnDefinition Width="40" ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.Column="0" Text="{Binding Name}" ></Entry>
+                        <Button Grid.Column="1" Text="X" Command="{Binding RemoveCommand}" ></Button>
+                        <!--remove button-->
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

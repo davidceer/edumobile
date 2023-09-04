@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataForm="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             android:TabbedPage.ToolbarPlacement="Bottom" BarBackgroundColor="#2196F3" BarTextColor="White"
+             android:TabbedPage.BarItemColor="#66FFFFFF"
+             android:TabbedPage.BarSelectedItemColor="White"
+             xmlns:local="clr-namespace:AcademiaNG.ViewModels"
+             x:Class="AcademiaNG.Views.Dashboard"
+             Title="{Binding Title}">
+    
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Menu">
+        <ListView ItemsSource="{x:Static local:DashboardViewModel.All}" ItemSelected="OnListViewItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}"
+                          Detail="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage>
+    
+    <ContentPage Title="Profile" IconImageSource="monkeyicon.png">
+        <!--<ContentPage.BindingContext>
+            <local:DashboardViewModel x:Name="dashboardViewModel"/>
+        </ContentPage.BindingContext>-->
+        <StackLayout>
+            <CollectionView x:Name="collectionView" ItemsSource="{Binding SettingsData}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="8" HorizontalOptions="EndAndExpand">
+                            <Label Text="{Binding Institution}" TextColor="Silver" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                            <!--Main information-->
+                            <Label Grid.Row="0" Text="Welcome" FontSize="24" TextColor="DarkSeaGreen" FontAttributes="Bold" Padding="20,0,0,30" VerticalOptions="CenterAndExpand"/>
+                            <!--Main image-->
+                            <Image Source="no_photo.png" Aspect="AspectFill" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+                            <Label Text="{Binding LoginID}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                            <Label Text="{Binding FullName}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Green" />
+                            <Label Text="{Binding StudentClass}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Gray" />
+                            <Label Text="{Binding UserDob}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Gray" />
+                            <Label Text="{Binding StudentAdmission}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Gray" />
+                            <Label Text="{Binding UserMobileNo}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Gray" />
+                            <Label Text="{}" TextColor="Green" />
+                            <!--Content of next step goes here -->
+                            <!--<Button x:Name="SubmitCommand" Text="Edit Profile" Command="{Binding SubmitCommand}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />-->
+                            <Button x:Name="EditProfile" Text="Edit Profile" Clicked="ProfileUpdate_ClickedEvent" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
+                                    Command="{Binding Path=BindingContext.TapCommand, Source={x:Reference Name=listView}}" 
+                                    CommandParameter="{Binding .}" />
+                            <!--<Button Text="Demo" Command="{Binding NavigateCommand}" CommandParameter="{x:Type local:DemoPage}" />-->
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Students">
+        <!--<ContentPage.BindingContext>
+            <local:DashboardViewModel x:Name="dashboardViewModel"/>
+        </ContentPage.BindingContext>-->
+        <ContentPage.Content>
+            <Grid>
+                <ListView x:Name="listView" 
+                           ItemsSource="{Binding StudentsItems}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20" Orientation="Horizontal">
+                                        <Image Source="logo.png" WidthRequest="30" HeightRequest="30"/>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="{Binding FullName}" />
+                                        </StackLayout>
+                                        <Button x:Name="ZoomIn" Text="Edit"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ContentPage.Content>        
+    </ContentPage>
+
+    <!--<ContentPage Title="Statistics">
+        <ContentPage.BindingContext>
+            <local:ChartsViewModel />
+        </ContentPage.BindingContext>
+
+        <StackLayout Padding="10, 0">
+            <BoxView Color="{Binding Color}" VerticalOptions="FillAndExpand" />
+
+            <Label Text="{Binding Hue, StringFormat='Hue = {0:F2}'}" HorizontalOptions="Center" />
+
+            <Slider Value="{Binding Hue, Mode=TwoWay}" />
+
+            <Label Text="{Binding Saturation, StringFormat='Saturation = {0:F2}'}" HorizontalOptions="Center" />
+
+            <Slider Value="{Binding Saturation, Mode=TwoWay}" />
+
+            <Label Text="{Binding Luminosity, StringFormat='Luminosity = {0:F2}'}" HorizontalOptions="Center" />
+
+            <Slider Value="{Binding Luminosity, Mode=TwoWay}" />
+        </StackLayout>
+
+    </ContentPage>-->
+
+    <ContentPage Title="Chart">
+        <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <chart:SfChart.BindingContext>
+                <local:ChartsViewModel />
+            </chart:SfChart.BindingContext>
+
+            <chart:SfChart.Legend>
+                <chart:ChartLegend />
+            </chart:SfChart.Legend>
+
+            <chart:SfChart.Title>
+                <chart:ChartTitle Text="Students Per Class" />
+            </chart:SfChart.Title>
+
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis>
+                    <chart:CategoryAxis.Title>
+                        <chart:ChartAxisTitle Text="Class" />
+                    </chart:CategoryAxis.Title>
+                </chart:CategoryAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Students" />
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:SfChart.Series>
+                <chart:ColumnSeries ItemsSource="{Binding ClassData}" Label="Statistics" XBindingPath="ClassName" YBindingPath="TotalStudents" EnableTooltip="True">
+                    <chart:ColumnSeries.DataMarker>
+                        <chart:ChartDataMarker />
+                    </chart:ColumnSeries.DataMarker>
+                </chart:ColumnSeries>
+            </chart:SfChart.Series>
+        </chart:SfChart>
+    </ContentPage>
+
+</TabbedPage>

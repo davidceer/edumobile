@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataForm="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
+             xmlns:local="clr-namespace:AcademiaNG.ViewModels"
+             x:Class="AcademiaNG.Views.UserEditPage"
+             Title="{Binding Title}">
+
+    <!--<ContentPage.BindingContext>
+        <local:UserEditViewModel />
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+        <CollectionView x:Name="collectionView" ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <!--<DatePicker x:Name="dateLabWorkPicked" Format="dd/MM/yyyy" FontSize="Large" Margin="30,0,0,0" />-->
+                        <Label Text="{Binding Institution}" TextColor="Silver" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                        <FlexLayout IsVisible="True" JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="30,0,30,0" >
+                            <Label TextColor="Black" FontAttributes="Bold" Text="EDIT PROFILE" FlexLayout.AlignSelf="Center" FontSize="20"/>
+                            <Entry Text="{Binding Path=UserID}" Placeholder="User ID" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Numeric" IsEnabled="false" />
+                            <Entry Text="{Binding Path=LoginID}" Placeholder="Login ID" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Numeric" IsEnabled="false" />
+                            <Entry Text="{Binding Path=FirstName}" Placeholder="First Name" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Text" />
+                            <Entry Text="{Binding Path=MiddleName}" Placeholder="Middle Name" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Text" />
+                            <Entry Text="{Binding Path=LastName}" Placeholder="Last Name" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Text" />
+                            <Entry Text="{Binding Path=UserEmail}" Placeholder="Email" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Text" />
+                            <Entry Text="{Binding Path=UserMobileNo}" Placeholder="Mobile Number" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Text" />
+                            <Entry Text="{Binding Path=UserDob}" Placeholder="Date of Birth" FlexLayout.AlignSelf="Stretch" HorizontalOptions="CenterAndExpand" TextColor="Black" Keyboard="Text" />
+                            
+                            <Label Text="{}" TextColor="Green" />
+                            <Button x:Name="UpdateProfile" Text="Update" Clicked="ProfileUpdate_ClickedEvent" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+                            <!--<Button Text="Update" x:Name="UpdateProfile" Command="{Binding Source={StaticResource local}, Path=UpdateCommand}" CommandParameter="{Binding .}" />-->
+                        </FlexLayout>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </ContentPage.Content>
+</ContentPage>
