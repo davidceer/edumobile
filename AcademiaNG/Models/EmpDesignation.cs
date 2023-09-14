@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AcademiaNG.Models
 {
-    public class EmpDesignation
+    public class EmpDesignation : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
         public int emp_designation_id { get; set; }

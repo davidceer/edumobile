@@ -7,7 +7,7 @@ using System.Text;
 namespace AcademiaNG.Models
 {
     [Table("Session")]
-    public class Session
+    public class Session : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
         public int sch_session_id { get; set; }

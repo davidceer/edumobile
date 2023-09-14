@@ -10,7 +10,7 @@ using System.Text;
 namespace AcademiaNG.Models
 {
     [Table("LoginDetails")]
-    public class LoginDetails : INotifyPropertyChanged
+    public class LoginDetails :  IDbEntity, INotifyPropertyChanged
     {
         [PrimaryKey, AutoIncrement]
         [JsonProperty("org_id")]

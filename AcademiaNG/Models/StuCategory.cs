@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AcademiaNG.Models
 {
-    public class StuCategory
+    public class StuCategory : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
         public int stu_category_id { get; set; }

@@ -8,7 +8,7 @@ using System.Text;
 namespace AcademiaNG.Models
 {
     [Table("Users")]
-    public class User
+    public class User : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
         public int UserID { get; set; }

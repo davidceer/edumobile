@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace AcademiaNG.Models
 {
-    public class StuInfo
+    public class StuInfo : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
         [JsonProperty("stu_info_id")]

@@ -53,7 +53,6 @@ namespace AcademiaNG.Helper
             HttpResponseMessage postRequest;
             HttpClient client = new HttpClient();
             Uri uri = new Uri(adaptiveUri);
-            
             var content = new FormUrlEncodedContent(modelObj);
             using (postRequest = await client.PostAsync(uri, content))
             {

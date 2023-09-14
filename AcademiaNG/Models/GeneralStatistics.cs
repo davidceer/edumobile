@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AcademiaNG.Models
 {
-    public class GeneralStatistics
+    public class GeneralStatistics : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
 

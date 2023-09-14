@@ -8,7 +8,7 @@ using System.Text;
 namespace AcademiaNG.Models
 {
     [Table("Organization")]
-    public class Organization
+    public class Organization : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
         [JsonProperty("org_id")]

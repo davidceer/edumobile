@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AcademiaNG.Models
 {
-    public class Batches
+    public class Batches : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
         public int batch_id { get; set; }

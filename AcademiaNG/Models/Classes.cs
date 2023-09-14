@@ -7,10 +7,9 @@ using System.Text;
 
 namespace AcademiaNG.Models
 {
-    public class Classes
+    public class Classes : IDbEntity
     {
         [PrimaryKey, AutoIncrement]
-
         [JsonProperty("class_id")]
         public int ClassID { get; set; }
 
